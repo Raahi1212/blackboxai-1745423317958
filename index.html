@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raahi - Ride Sharing Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .splash-screen {
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .splash-fade-out {
+            animation: fadeOut 1s ease-out forwards;
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-black text-white min-h-screen">
+    <!-- Splash Screen -->
+    <div id="splashScreen" class="splash-screen fixed inset-0 flex items-center justify-center bg-black z-50">
+        <div class="text-center">
+            <div class="w-64 h-64 mx-auto mb-6">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0yNTAgNTBDMTM3LjE1NyA1MCA0NSAxNDIuMTU3IDQ1IDI1NUM0NSAzNjcuODQzIDEzNy4xNTcgNDYwIDI1MCA0NjBDMzYyLjg0MyA0NjAgNDU1IDM2Ny44NDMgNDU1IDI1NUM0NTUgMTQyLjE1NyAzNjIuODQzIDUwIDI1MCA1MFoiIGZpbGw9IiM2NjMzMDAiLz4KPHBhdGggZD0iTTI1MCA3NUMxNTAuNTg4IDc1IDcwIDE1NS41ODggNzAgMjU1QzcwIDM1NC40MTIgMTUwLjU4OCA0MzUgMjUwIDQzNUMzNDkuNDEyIDQzNSA0MzAgMzU0LjQxMiA0MzAgMjU1QzQzMCAxNTUuNTg4IDM0OS40MTIgNzUgMjUwIDc1WiIgZmlsbD0iI0ZGRkZGRiIvPgo8cGF0aCBkPSJNMjUwIDEwMEMxNjQuMjcyIDEwMCA5NSAxNjkuMjcyIDk1IDI1NUM5NSAzNDAuNzI4IDE2NC4yNzIgNDEwIDI1MCA0MTBDMzM1LjcyOCA0MTAgNDA1IDM0MC43MjggNDA1IDI1NUM0MDUgMTY5LjI3MiAzMzUuNzI4IDEwMCAyNTAgMTAwWiIgZmlsbD0iIzY2MzMwMCIvPgo8cGF0aCBkPSJNMjUwIDEyNUMxNzguMDEzIDEyNSAxMjAgMTgzLjAxMyAxMjAgMjU1QzEyMCAzMjYuOTg3IDE3OC4wMTMgMzg1IDI1MCAzODVDMzIxLjk4NyAzODUgMzgwIDMyNi45ODcgMzgwIDI1NUMzODAgMTgzLjAxMyAzMjEuOTg3IDEyNSAyNTAgMTI1WiIgZmlsbD0iI0ZGRkZGRiIvPgo8cGF0aCBkPSJNMjUwIDE1MEMxOTEuNzE2IDE1MCAxNDUgMTk2LjcxNiAxNDUgMjU1QzE0NSAzMTMuMjg0IDE5MS43MTYgMzYwIDI1MCAzNjBDMzA4LjI4NCAzNjAgMzU1IDMxMy4yODQgMzU1IDI1NUMzNTUgMTk2LjcxNiAzMDguMjg0IDE1MCAyNTAgMTUwWiIgZmlsbD0iIzY2MzMwMCIvPgo8cGF0aCBkPSJNMjUwIDE3NUMyMDUuMzk3IDE3NSAxNzAgMjEwLjM5NyAxNzAgMjU1QzE3MCAyOTkuNjAzIDIwNS4zOTcgMzM1IDI1MCAzMzVDMjk0LjYwMyAzMzUgMzMwIDI5OS42MDMgMzMwIDI1NUMzMzAgMjEwLjM5NyAyOTQuNjAzIDE3NSAyNTAgMTc1WiIgZmlsbD0iI0ZGRkZGRiIvPgo8cGF0aCBkPSJNMjUwIDIwMEMyMTkuMDg5IDIwMCAxOTQgMjI1LjA4OSAxOTQgMjU1QzE5NCAyODQuOTExIDIxOS4wODkgMzEwIDI1MCAzMTBDMjgwLjkxMSAzMTAgMzA2IDI4NC45MTEgMzA2IDI1NUMzMDYgMjI1LjA4OSAyODAuOTExIDIwMCAyNTAgMjAwWiIgZmlsbD0iIzY2MzMwMCIvPgo8cGF0aCBkPSJNMjUwIDIyNUMyMzIuNzYxIDIyNSAyMTkgMjM4Ljc2MSAyMTkgMjU1QzIxOSAyNzEuMjM5IDIzMi43NjEgMjg1IDI1MCAyODVDMjY3LjIzOSAyODUgMjgxIDI3MS4yMzkgMjgxIDI1NUMyODEgMjM4Ljc2MSAyNjcuMjM5IDIyNSAyNTAgMjI1WiIgZmlsbD0iI0ZGRkZGRiIvPgo8L3N2Zz4=" alt="Raahi Logo" class="w-full h-full">
+            </div>
+            <h1 class="text-4xl font-bold mb-2">Raahi</h1>
+            <p class="text-xl text-gray-400">Why pay full fare when you can share?</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent" class="hidden">
+        <!-- Navigation -->
+        <nav class="bg-black p-4 fixed w-full top-0 z-40">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center">
+                <div class="flex space-x-4">
+                    <a href="login.html" class="px-4 py-2 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition">Login</a>
+                    <a href="signup.html" class="px-4 py-2 rounded-full border border-white text-white font-semibold hover:bg-white hover:text-black transition">Sign up</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="relative h-screen">
+            <div class="absolute inset-0">
+                <img src="https://images.pexels.com/photos/13861/IMG_3496bw.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                     alt="Hero Background" 
+                     class="w-full h-full object-cover opacity-50">
+            </div>
+            <div class="relative container mx-auto px-4 h-full flex items-center">
+                <div class="max-w-2xl">
+                    <h1 class="text-5xl font-bold mb-6">Go anywhere with Raahi</h1>
+                    <p class="text-xl mb-8">Request a ride, hop in, and go. Share your journey with others and contribute to a greener planet.</p>
+                    <div class="bg-white rounded-lg p-6 shadow-lg">
+                        <div class="flex flex-col space-y-4">
+                            <input type="text" placeholder="Enter pickup location" class="p-4 border rounded-lg text-black">
+                            <input type="text" placeholder="Enter destination" class="p-4 border rounded-lg text-black">
+                            <button class="bg-black text-white py-4 rounded-lg font-semibold hover:bg-gray-900 transition">
+                                Find a Ride
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="bg-white text-black py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 text-center">Why Choose Raahi?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <i class="fas fa-coins text-4xl mb-4 text-green-600"></i>
+                        <h3 class="text-xl font-semibold mb-2">Save Money</h3>
+                        <p class="text-gray-600">Share rides and split costs with fellow travelers</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-leaf text-4xl mb-4 text-green-600"></i>
+                        <h3 class="text-xl font-semibold mb-2">Eco-Friendly</h3>
+                        <p class="text-gray-600">Reduce your carbon footprint by sharing rides</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-shield-alt text-4xl mb-4 text-green-600"></i>
+                        <h3 class="text-xl font-semibold mb-2">Safe & Secure</h3>
+                        <p class="text-gray-600">Verified users and emergency support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle splash screen animation
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const splashScreen = document.getElementById('splashScreen');
+                const mainContent = document.getElementById('mainContent');
+                
+                splashScreen.classList.add('splash-fade-out');
+                
+                setTimeout(() => {
+                    splashScreen.style.display = 'none';
+                    mainContent.classList.remove('hidden');
+                }, 1000);
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
