@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Rides - Raahi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            padding-bottom: 4rem;
+        }
+        .bottom-nav-item.active {
+            color: #000;
+        }
+        .tab.active {
+            color: #000;
+            border-bottom: 2px solid #000;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <h1 class="text-2xl font-bold text-gray-900">My Rides</h1>
+        </div>
+    </header>
+
+    <!-- Tabs -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4">
+            <div class="flex space-x-8">
+                <button class="tab active py-4 px-2 text-sm font-medium" data-tab="upcoming">
+                    Upcoming Rides
+                </button>
+                <button class="tab py-4 px-2 text-sm font-medium text-gray-500" data-tab="past">
+                    Past Rides
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-6">
+        <!-- Upcoming Rides -->
+        <div id="upcomingRides" class="space-y-4">
+            <!-- As Driver -->
+            <div class="bg-white rounded-xl shadow-sm p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">
+                            As Driver
+                        </div>
+                        <div class="text-sm text-gray-500">Tomorrow, 10:00 AM</div>
+                    </div>
+                    <span class="text-sm font-medium text-green-600">₹500/seat</span>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-gray-400 mt-1 w-5"></i>
+                        <div>
+                            <p class="font-medium">Mumbai</p>
+                            <p class="text-sm text-gray-500">Pickup: Andheri West</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-gray-400 mt-1 w-5"></i>
+                        <div>
+                            <p class="font-medium">Pune</p>
+                            <p class="text-sm text-gray-500">Drop: Hinjewadi</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-4 border-t">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex -space-x-2">
+                                <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" class="w-8 h-8 rounded-full border-2 border-white" alt="Passenger 1">
+                                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" class="w-8 h-8 rounded-full border-2 border-white" alt="Passenger 2">
+                            </div>
+                            <span class="text-sm text-gray-600">2 passengers</span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="px-3 py-1 text-sm border border-gray-300 rounded-lg hover:bg-gray-50">
+                                <i class="fas fa-phone-alt mr-1"></i>Contact
+                            </button>
+                            <button class="px-3 py-1 text-sm text-red-600 border border-red-200 rounded-lg hover:bg-red-50">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- As Passenger -->
+            <div class="bg-white rounded-xl shadow-sm p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">
+                            As Passenger
+                        </div>
+                        <div class="text-sm text-gray-500">Next Week, 9:00 AM</div>
+                    </div>
+                    <span class="text-sm font-medium text-green-600">₹800/seat</span>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-gray-400 mt-1 w-5"></i>
+                        <div>
+                            <p class="font-medium">Delhi</p>
+                            <p class="text-sm text-gray-500">Pickup: Connaught Place</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-gray-400 mt-1 w-5"></i>
+                        <div>
+                            <p class="font-medium">Agra</p>
+                            <p class="text-sm text-gray-500">Drop: Taj Ganj</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-4 border-t">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" class="w-8 h-8 rounded-full" alt="Driver">
+                            <div>
+                                <p class="font-medium">Rahul S.</p>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                    <span>4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button class="px-3 py-1 text-sm border border-gray-300 rounded-lg hover:bg-gray-50">
+                                <i class="fas fa-phone-alt mr-1"></i>Contact
+                            </button>
+                            <button class="px-3 py-1 text-sm text-red-600 border border-red-200 rounded-lg hover:bg-red-50">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Past Rides -->
+        <div id="pastRides" class="space-y-4 hidden">
+            <!-- Past Ride Card -->
+            <div class="bg-white rounded-xl shadow-sm p-6 opacity-75">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">
+                            As Passenger
+                        </div>
+                        <div class="text-sm text-gray-500">Last Week</div>
+                    </div>
+                    <span class="text-sm font-medium text-gray-600">₹600/seat</span>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-gray-400 mt-1 w-5"></i>
+                        <div>
+                            <p class="font-medium">Bangalore</p>
+                            <p class="text-sm text-gray-500">Pickup: Koramangala</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-gray-400 mt-1 w-5"></i>
+                        <div>
+                            <p class="font-medium">Mysore</p>
+                            <p class="text-sm text-gray-500">Drop: Palace Road</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-4 border-t">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" class="w-8 h-8 rounded-full" alt="Driver">
+                            <div>
+                                <p class="font-medium">Priya M.</p>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-star text-yellow-400 mr-1"></i>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="px-3 py-1 text-sm border border-gray-300 rounded-lg hover:bg-gray-50">
+                            Rate Ride
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
+        <div class="flex justify-around items-center h-16">
+            <a href="home.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-home text-xl mb-1"></i>
+                <span>Home</span>
+            </a>
+            <a href="find-ride.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-search text-xl mb-1"></i>
+                <span>Find</span>
+            </a>
+            <a href="offer-ride.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-car text-xl mb-1"></i>
+                <span>Offer</span>
+            </a>
+            <a href="my-rides.html" class="bottom-nav-item active flex flex-col items-center text-sm">
+                <i class="fas fa-list text-xl mb-1"></i>
+                <span>My Rides</span>
+            </a>
+            <a href="profile.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-user text-xl mb-1"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('.tab');
+        const upcomingRides = document.getElementById('upcomingRides');
+        const pastRides = document.getElementById('pastRides');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update tab styles
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Show/hide content
+                if (tab.dataset.tab === 'upcoming') {
+                    upcomingRides.classList.remove('hidden');
+                    pastRides.classList.add('hidden');
+                } else {
+                    upcomingRides.classList.add('hidden');
+                    pastRides.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
