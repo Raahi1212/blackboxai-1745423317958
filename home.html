@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Raahi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            padding-bottom: 4rem;
+        }
+        .bottom-nav-item.active {
+            color: #000;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold text-gray-900">Welcome, Rahul!</h1>
+                <p class="text-gray-600">Ready to start your journey?</p>
+            </div>
+            <a href="notifications.html" class="relative">
+                <i class="fas fa-bell text-xl text-gray-600"></i>
+                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">2</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-6">
+        <!-- Quick Actions -->
+        <div class="grid grid-cols-2 gap-4 mb-8">
+            <a href="offer-ride.html" class="bg-white rounded-xl shadow-sm p-6 text-center hover:shadow-md transition duration-200">
+                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-car text-green-600 text-xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-900">Post a Ride</h3>
+                <p class="text-sm text-gray-600 mt-1">Share your journey</p>
+            </a>
+            <a href="find-ride.html" class="bg-white rounded-xl shadow-sm p-6 text-center hover:shadow-md transition duration-200">
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fas fa-search text-blue-600 text-xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-900">Find a Ride</h3>
+                <p class="text-sm text-gray-600 mt-1">Join a journey</p>
+            </a>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+            <h2 class="text-lg font-semibold mb-4">Recent Activity</h2>
+            <div class="space-y-4">
+                <div class="flex items-start space-x-4">
+                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-check text-green-600"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium">Ride completed with Priya</p>
+                        <p class="text-sm text-gray-600">Bennett to Pacific Mall • Yesterday</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-4">
+                    <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-clock text-yellow-600"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium">Upcoming ride with Amit</p>
+                        <p class="text-sm text-gray-600">Bennett to Noida • Tomorrow, 9:00 AM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="grid grid-cols-2 gap-4 mb-8">
+            <div class="bg-white rounded-xl shadow-sm p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-semibold text-gray-900">Total Rides</h3>
+                    <i class="fas fa-route text-green-600"></i>
+                </div>
+                <p class="text-2xl font-bold">24</p>
+                <p class="text-sm text-gray-600">Last 30 days</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-sm p-6">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-semibold text-gray-900">CO₂ Saved</h3>
+                    <i class="fas fa-leaf text-green-600"></i>
+                </div>
+                <p class="text-2xl font-bold">45 kg</p>
+                <p class="text-sm text-gray-600">By carpooling</p>
+            </div>
+        </div>
+
+        <!-- Available Rides -->
+        <div class="bg-white rounded-xl shadow-sm p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold">Available Rides</h2>
+                <a href="find-ride.html" class="text-green-600 text-sm hover:text-green-700">View All</a>
+            </div>
+            <div class="space-y-4">
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="font-medium">Bennett to Pacific Mall</h3>
+                            <p class="text-sm text-gray-600">Today, 4:00 PM • 3 seats left</p>
+                        </div>
+                        <span class="text-green-600 font-medium">₹60</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Driver" class="w-6 h-6 rounded-full">
+                        <span class="text-sm text-gray-600">Amit K.</span>
+                        <span class="text-sm text-gray-400">•</span>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-sm text-gray-600 ml-1">4.8</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h3 class="font-medium">Bennett to Noida City Center</h3>
+                            <p class="text-sm text-gray-600">Tomorrow, 9:00 AM • 2 seats left</p>
+                        </div>
+                        <span class="text-green-600 font-medium">₹80</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Driver" class="w-6 h-6 rounded-full">
+                        <span class="text-sm text-gray-600">Priya S.</span>
+                        <span class="text-sm text-gray-400">•</span>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 text-xs"></i>
+                            <span class="text-sm text-gray-600 ml-1">4.9</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
+        <div class="flex justify-around items-center h-16">
+            <a href="home.html" class="bottom-nav-item active flex flex-col items-center text-sm">
+                <i class="fas fa-home text-xl mb-1"></i>
+                <span>Home</span>
+            </a>
+            <a href="find-ride.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-search text-xl mb-1"></i>
+                <span>Find</span>
+            </a>
+            <a href="offer-ride.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-car text-xl mb-1"></i>
+                <span>Offer</span>
+            </a>
+            <a href="my-rides.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-list text-xl mb-1"></i>
+                <span>My Rides</span>
+            </a>
+            <a href="profile.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-user text-xl mb-1"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Add any necessary JavaScript functionality here
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle notifications
+            const notificationBell = document.querySelector('.fa-bell');
+            notificationBell.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Handle notification click
+            });
+        });
+    </script>
+</body>
+</html>
