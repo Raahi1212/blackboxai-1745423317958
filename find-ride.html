@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Ride - Raahi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            padding-bottom: 4rem;
+        }
+        .bottom-nav-item.active {
+            color: #000;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <h1 class="text-2xl font-bold text-gray-900">Find a Ride</h1>
+            <p class="text-gray-600">Join a journey with fellow students</p>
+        </div>
+    </header>
+
+    <!-- Search Section -->
+    <div class="container mx-auto px-4 py-6">
+        <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">From</label>
+                    <div class="relative">
+                        <i class="fas fa-map-marker-alt absolute left-3 top-3 text-gray-400"></i>
+                        <input type="text" placeholder="Bennett University" value="Bennett University" readonly
+                            class="pl-10 block w-full rounded-lg border-gray-300 border p-2.5 bg-gray-50 text-gray-700">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">To</label>
+                    <div class="relative">
+                        <i class="fas fa-map-marker absolute left-3 top-3 text-gray-400"></i>
+                        <input type="text" placeholder="Where are you going?"
+                            class="pl-10 block w-full rounded-lg border-gray-300 border p-2.5 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">When</label>
+                    <div class="relative">
+                        <i class="fas fa-calendar absolute left-3 top-3 text-gray-400"></i>
+                        <input type="date"
+                            class="pl-10 block w-full rounded-lg border-gray-300 border p-2.5 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition duration-200">
+                    Search Rides
+                </button>
+            </form>
+        </div>
+
+        <!-- Available Rides -->
+        <div class="space-y-4">
+            <h2 class="text-lg font-semibold">Available Rides</h2>
+            
+            <!-- Ride Card -->
+            <div class="bg-white rounded-xl shadow-sm p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-2">
+                            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Driver" class="w-10 h-10 rounded-full">
+                            <div>
+                                <h3 class="font-medium">Amit Kumar</h3>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <span class="ml-1">4.8</span>
+                                    <span class="mx-2">•</span>
+                                    <span>50+ rides</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center text-sm">
+                                <i class="fas fa-circle text-green-500 text-xs mr-2"></i>
+                                <span>Bennett University</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
+                                <span>Pacific Mall, Ghaziabad</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="text-green-600 font-medium">₹60</span>
+                </div>
+                
+                <div class="flex items-center justify-between text-sm text-gray-600 mb-4">
+                    <div>
+                        <i class="fas fa-clock mr-1"></i>
+                        <span>Today, 4:00 PM</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-user-friends mr-1"></i>
+                        <span>3 seats left</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-car mr-1"></i>
+                        <span>Honda City</span>
+                    </div>
+                </div>
+
+                <div class="ride-actions">
+                    <!-- Initial Request Button -->
+                    <button class="request-btn w-full bg-green-600 text-white py-2 rounded-lg font-medium hover:bg-green-700 transition duration-200">
+                        Request to Join
+                    </button>
+                    
+                    <!-- Chat Button (Initially Hidden) -->
+                    <a href="#" class="chat-btn hidden w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition duration-200 text-center">
+                        <i class="fas fa-comments mr-2"></i>
+                        Chat with Driver
+                    </a>
+                </div>
+            </div>
+
+            <!-- Another Ride Card -->
+            <div class="bg-white rounded-xl shadow-sm p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-2">
+                            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Driver" class="w-10 h-10 rounded-full">
+                            <div>
+                                <h3 class="font-medium">Priya Singh</h3>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <span class="ml-1">4.9</span>
+                                    <span class="mx-2">•</span>
+                                    <span>30+ rides</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center text-sm">
+                                <i class="fas fa-circle text-green-500 text-xs mr-2"></i>
+                                <span>Bennett University</span>
+                            </div>
+                            <div class="flex items-center text-sm">
+                                <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
+                                <span>Noida City Center</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="text-green-600 font-medium">₹80</span>
+                </div>
+                
+                <div class="flex items-center justify-between text-sm text-gray-600 mb-4">
+                    <div>
+                        <i class="fas fa-clock mr-1"></i>
+                        <span>Tomorrow, 9:00 AM</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-user-friends mr-1"></i>
+                        <span>2 seats left</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-car mr-1"></i>
+                        <span>Hyundai i20</span>
+                    </div>
+                </div>
+
+                <div class="ride-actions">
+                    <!-- Initial Request Button -->
+                    <button class="request-btn w-full bg-green-600 text-white py-2 rounded-lg font-medium hover:bg-green-700 transition duration-200">
+                        Request to Join
+                    </button>
+                    
+                    <!-- Chat Button (Initially Hidden) -->
+                    <a href="#" class="chat-btn hidden w-full bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition duration-200 text-center">
+                        <i class="fas fa-comments mr-2"></i>
+                        Chat with Driver
+                    </a>
+                </div>
+            </div>
+
+            <!-- No Rides Message (Initially Hidden) -->
+            <div id="noRidesMessage" class="hidden bg-white rounded-xl shadow-sm p-6 text-center">
+                <i class="fas fa-car-side text-gray-400 text-4xl mb-4"></i>
+                <h3 class="text-lg font-medium text-gray-900 mb-2">No rides available</h3>
+                <p class="text-gray-600">No one is going your way yet. Be the first to post a ride!</p>
+                <a href="offer-ride.html" class="inline-block mt-4 text-green-600 font-medium hover:text-green-700">
+                    Post a Ride
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
+        <div class="flex justify-around items-center h-16">
+            <a href="home.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-home text-xl mb-1"></i>
+                <span>Home</span>
+            </a>
+            <a href="find-ride.html" class="bottom-nav-item active flex flex-col items-center text-sm">
+                <i class="fas fa-search text-xl mb-1"></i>
+                <span>Find</span>
+            </a>
+            <a href="offer-ride.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-car text-xl mb-1"></i>
+                <span>Offer</span>
+            </a>
+            <a href="my-rides.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-list text-xl mb-1"></i>
+                <span>My Rides</span>
+            </a>
+            <a href="profile.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-user text-xl mb-1"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Get all ride cards and form elements
+        const searchForm = document.querySelector('form');
+        const searchFormContainer = searchForm.closest('.bg-white');
+        const ridesContainer = document.querySelector('.space-y-4');
+        const rideCards = Array.from(ridesContainer.children).filter(el => 
+            el.classList.contains('bg-white') && 
+            el.classList.contains('rounded-xl') && 
+            !el.id.includes('noRidesMessage')
+        );
+        const noRidesMessage = document.getElementById('noRidesMessage');
+
+        // Initially hide all ride cards and no rides message
+        rideCards.forEach(card => card.style.display = 'none');
+        noRidesMessage.style.display = 'none';
+
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const destination = this.querySelector('input[placeholder="Where are you going?"]').value.toLowerCase();
+            
+            // Show matching rides
+            let matchFound = false;
+            rideCards.forEach(card => {
+                const cardDestination = card.querySelector('.fa-map-marker-alt').nextElementSibling.textContent.toLowerCase();
+                if (cardDestination.includes(destination)) {
+                    card.style.display = 'block';
+                    matchFound = true;
+                }
+            });
+
+            // Show appropriate message if no matches found
+            if (!matchFound) {
+                noRidesMessage.style.display = 'block';
+            }
+            
+            // Hide search form
+            searchFormContainer.style.display = 'none';
+        });
+
+        // Handle ride request and chat functionality
+        document.querySelectorAll('.ride-actions').forEach(actionDiv => {
+            const requestBtn = actionDiv.querySelector('.request-btn');
+            const chatBtn = actionDiv.querySelector('.chat-btn');
+
+            requestBtn.addEventListener('click', function() {
+                // Simulate server response after 1 second
+                setTimeout(() => {
+                    // Simulate driver accepting the request
+                    alert('Good news! The driver has accepted your request.');
+                    
+                    // Hide request button and show chat button
+                    requestBtn.classList.add('hidden');
+                    chatBtn.classList.remove('hidden');
+                    
+                    // Add click handler for chat button
+                    chatBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        openChat();
+                    });
+                }, 1000);
+            });
+        });
+
+        // Chat functionality
+        function openChat() {
+            // Create chat modal
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white w-full max-w-md mx-4 rounded-xl shadow-lg overflow-hidden">
+                    <div class="p-4 bg-green-600 text-white flex justify-between items-center">
+                        <h3 class="font-semibold">Chat with Driver</h3>
+                        <button class="text-white hover:text-gray-200" onclick="this.closest('.fixed').remove()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="h-96 p-4 overflow-y-auto bg-gray-50" id="chatMessages">
+                        <div class="flex flex-col space-y-4">
+                            <div class="flex justify-start">
+                                <div class="bg-white rounded-lg p-3 shadow max-w-xs">
+                                    <p class="text-gray-800">Hi! I've accepted your ride request.</p>
+                                    <p class="text-xs text-gray-500 mt-1">10:30 AM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-white border-t">
+                        <form class="flex space-x-2" onsubmit="sendMessage(event)">
+                            <input type="text" 
+                                class="flex-1 rounded-lg border-gray-300 border p-2 focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                                placeholder="Type your message...">
+                            <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // Send message function
+        function sendMessage(e) {
+            e.preventDefault();
+            const input = e.target.querySelector('input');
+            const message = input.value.trim();
+            
+            if (message) {
+                const chatMessages = document.getElementById('chatMessages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'flex justify-end';
+                messageDiv.innerHTML = `
+                    <div class="bg-green-600 text-white rounded-lg p-3 shadow max-w-xs">
+                        <p>${message}</p>
+                        <p class="text-xs text-green-200 mt-1">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
+                    </div>
+                `;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                input.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
