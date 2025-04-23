@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offer a Ride - Raahi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            padding-bottom: 4rem;
+        }
+        .bottom-nav-item.active {
+            color: #000;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <h1 class="text-2xl font-bold text-gray-900">Offer a Ride</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-6">
+        <!-- Ride Details Form -->
+        <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+            <h2 class="text-lg font-semibold mb-4">Trip Details</h2>
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Pickup Location</label>
+                    <div class="relative">
+                        <input type="text" placeholder="Enter pickup location" class="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500">
+                        <i class="fas fa-map-marker-alt absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Destination</label>
+                    <div class="relative">
+                        <input type="text" placeholder="Enter destination" class="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500">
+                        <i class="fas fa-map-marker-alt absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                        <input type="date" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Time</label>
+                        <input type="time" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Vehicle Details -->
+        <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+            <h2 class="text-lg font-semibold mb-4">Vehicle Details</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Select Vehicle</label>
+                    <select class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500">
+                        <option value="honda-city">Honda City (White) - KA01AB1234</option>
+                        <option value="add-new">+ Add New Vehicle</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Available Seats</label>
+                    <select class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500">
+                        <option value="1">1 Seat</option>
+                        <option value="2">2 Seats</option>
+                        <option value="3">3 Seats</option>
+                        <option value="4">4 Seats</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Price per Seat</label>
+                    <div class="relative">
+                        <input type="number" placeholder="Enter amount" class="w-full pl-8 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500">
+                        <span class="absolute left-3 top-2.5 text-gray-500">₹</span>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">+ ₹5 Raahi platform fee</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preferences -->
+        <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
+            <h2 class="text-lg font-semibold mb-4">Preferences</h2>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-venus-mars text-gray-600"></i>
+                        <span>Accept female passengers only</span>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" class="sr-only peer">
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                    </label>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Additional Notes</label>
+                    <textarea placeholder="Any special instructions for passengers?" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 h-24"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Post Button -->
+        <button class="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-900 transition">
+            Post Ride
+        </button>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
+        <div class="flex justify-around items-center h-16">
+            <a href="home.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-home text-xl mb-1"></i>
+                <span>Home</span>
+            </a>
+            <a href="find-ride.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-search text-xl mb-1"></i>
+                <span>Find</span>
+            </a>
+            <a href="offer-ride.html" class="bottom-nav-item active flex flex-col items-center text-sm">
+                <i class="fas fa-car text-xl mb-1"></i>
+                <span>Offer</span>
+            </a>
+            <a href="my-rides.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-list text-xl mb-1"></i>
+                <span>My Rides</span>
+            </a>
+            <a href="profile.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-user text-xl mb-1"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Form validation and submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add validation and submission logic here
+        });
+
+        // Price input formatting
+        const priceInput = document.querySelector('input[type="number"]');
+        priceInput.addEventListener('input', function() {
+            if (this.value < 0) this.value = 0;
+        });
+
+        // Post button click handler
+        document.querySelector('button.bg-black').addEventListener('click', function() {
+            // Add ride posting logic here
+            window.location.href = 'my-rides.html';
+        });
+    </script>
+</body>
+</html>
