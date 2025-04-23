@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Ride - Raahi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .search-input:focus {
+            box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+        }
+        .bottom-nav-item.active {
+            color: #16a34a;
+        }
+        .bottom-nav-item.active i {
+            color: #16a34a;
+        }
+        .ride-card {
+            transition: all 0.3s ease;
+        }
+        .ride-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .filter-btn {
+            transition: all 0.2s ease;
+        }
+        .filter-btn:hover {
+            transform: translateY(-1px);
+        }
+        .filter-btn.active {
+            background-color: #16a34a;
+            color: white;
+            border-color: #16a34a;
+        }
+        .request-btn {
+            transition: all 0.3s ease;
+        }
+        .request-btn.sent {
+            background-color: #16a34a;
+            opacity: 0.9;
+        }
+        .fade-enter {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        .fade-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+        .no-rides {
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .notification {
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translate(-50%, 20px);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen pb-20">
+    <!-- Header with Search Bar -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between mb-4">
+                <h1 class="text-2xl font-bold text-gray-900">Find a Ride</h1>
+                <button class="text-gray-600 hover:text-gray-900 transition-colors">
+                    <i class="fas fa-filter text-xl"></i>
+                </button>
+            </div>
+            <div class="relative">
+                <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                <input type="text" placeholder="Where are you going?" 
+                    class="search-input w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-green-500 transition-all duration-200">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-6">
+        <!-- Quick Filters -->
+        <div class="flex gap-3 overflow-x-auto pb-4 scrollbar-hide">
+            <button class="filter-btn active flex items-center px-4 py-2 bg-green-500 text-white rounded-full whitespace-nowrap">
+                <i class="fas fa-clock mr-2"></i>
+                Today
+            </button>
+            <button class="filter-btn flex items-center px-4 py-2 bg-white text-gray-700 rounded-full whitespace-nowrap border border-gray-200">
+                <i class="fas fa-calendar mr-2"></i>
+                Tomorrow
+            </button>
+            <button class="filter-btn flex items-center px-4 py-2 bg-white text-gray-700 rounded-full whitespace-nowrap border border-gray-200">
+                <i class="fas fa-map-marker-alt mr-2"></i>
+                Nearby
+            </button>
+            <button class="filter-btn flex items-center px-4 py-2 bg-white text-gray-700 rounded-full whitespace-nowrap border border-gray-200">
+                <i class="fas fa-sort-amount-down mr-2"></i>
+                Price
+            </button>
+        </div>
+
+        <!-- Available Rides -->
+        <div class="space-y-4 mt-6" id="ridesContainer">
+            <!-- No Rides Found Message -->
+            <div id="noRidesMessage" class="no-rides hidden bg-white rounded-xl shadow-sm p-8 text-center border border-gray-100">
+                <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-car-side text-gray-400 text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">No rides found</h3>
+                <p class="text-gray-600 mb-6">We couldn't find any rides matching your search. Try adjusting your filters or search terms.</p>
+                <button onclick="resetSearch()" class="text-green-500 font-medium hover:text-green-600 transition-colors">
+                    <i class="fas fa-redo-alt mr-2"></i>
+                    Reset Search
+                </button>
+            </div>
+
+            <!-- Ride Card 1 -->
+            <div class="ride-card bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                <div class="flex justify-between items-start">
+                    <div class="flex items-start space-x-4">
+                        <div class="relative">
+                            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Driver" class="w-12 h-12 rounded-full">
+                            <span class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Amit Kumar</h3>
+                            <div class="flex items-center mt-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <span class="ml-1 text-sm font-medium">4.8</span>
+                                </div>
+                                <span class="mx-2 text-gray-300">•</span>
+                                <span class="text-sm text-gray-600">50+ rides</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-lg font-semibold text-green-600">₹60</span>
+                        <p class="text-sm text-gray-500">per seat</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 space-y-3">
+                    <div class="flex items-start">
+                        <div class="mt-1">
+                            <i class="fas fa-circle text-green-500 text-xs"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-gray-900">Bennett University</p>
+                            <p class="text-sm text-gray-500">Greater Noida</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="mt-1">
+                            <i class="fas fa-map-marker-alt text-red-500"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-gray-900">Pacific Mall</p>
+                            <p class="text-sm text-gray-500">Ghaziabad</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex items-center justify-between text-sm text-gray-600">
+                    <div class="flex items-center">
+                        <i class="fas fa-clock text-gray-400 mr-2"></i>
+                        <span>Today, 4:00 PM</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-user-friends text-gray-400 mr-2"></i>
+                        <span>3 seats left</span>
+                    </div>
+                </div>
+
+                <button class="request-btn mt-6 w-full bg-green-500 text-white py-3 rounded-xl font-medium hover:bg-green-600 transition duration-200 flex items-center justify-center">
+                    <i class="fas fa-hand-point-up mr-2"></i>
+                    Request to Join
+                </button>
+            </div>
+
+            <!-- Ride Card 2 -->
+            <div class="ride-card bg-white rounded-xl shadow-sm p-6 border border-gray-100" data-time="tomorrow">
+                <div class="flex justify-between items-start">
+                    <div class="flex items-start space-x-4">
+                        <div class="relative">
+                            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Driver" class="w-12 h-12 rounded-full">
+                            <span class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Priya Singh</h3>
+                            <div class="flex items-center mt-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                    <span class="ml-1 text-sm font-medium">4.9</span>
+                                </div>
+                                <span class="mx-2 text-gray-300">•</span>
+                                <span class="text-sm text-gray-600">30+ rides</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-lg font-semibold text-green-600">₹80</span>
+                        <p class="text-sm text-gray-500">per seat</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 space-y-3">
+                    <div class="flex items-start">
+                        <div class="mt-1">
+                            <i class="fas fa-circle text-green-500 text-xs"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-gray-900">Bennett University</p>
+                            <p class="text-sm text-gray-500">Greater Noida</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="mt-1">
+                            <i class="fas fa-map-marker-alt text-red-500"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-gray-900">Noida City Center</p>
+                            <p class="text-sm text-gray-500">Sector 32, Noida</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex items-center justify-between text-sm text-gray-600">
+                    <div class="flex items-center">
+                        <i class="fas fa-clock text-gray-400 mr-2"></i>
+                        <span>Tomorrow, 9:00 AM</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-user-friends text-gray-400 mr-2"></i>
+                        <span>2 seats left</span>
+                    </div>
+                </div>
+
+                <button class="request-btn mt-6 w-full bg-green-500 text-white py-3 rounded-xl font-medium hover:bg-green-600 transition duration-200 flex items-center justify-center">
+                    <i class="fas fa-hand-point-up mr-2"></i>
+                    Request to Join
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200">
+        <div class="flex justify-around items-center h-16">
+            <a href="home.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-home text-xl mb-1"></i>
+                <span>Home</span>
+            </a>
+            <a href="find-ride.html" class="bottom-nav-item active flex flex-col items-center text-sm">
+                <i class="fas fa-search text-xl mb-1"></i>
+                <span>Find</span>
+            </a>
+            <a href="offer-ride.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-car text-xl mb-1"></i>
+                <span>Offer</span>
+            </a>
+            <a href="my-rides.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-list text-xl mb-1"></i>
+                <span>My Rides</span>
+            </a>
+            <a href="profile.html" class="bottom-nav-item flex flex-col items-center text-sm text-gray-600">
+                <i class="fas fa-user text-xl mb-1"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Handle search functionality
+        const searchInput = document.querySelector('.search-input');
+        const rideCards = document.querySelectorAll('.ride-card');
+        const noRidesMessage = document.getElementById('noRidesMessage');
+
+        function updateRidesVisibility(searchTerm = '') {
+            let visibleRides = 0;
+            
+            rideCards.forEach(card => {
+                const destination = card.querySelector('.fa-map-marker-alt')
+                    .closest('.flex').querySelector('p').textContent.toLowerCase();
+                
+                if (destination.includes(searchTerm.toLowerCase())) {
+                    card.style.display = 'block';
+                    card.classList.add('fade-enter');
+                    requestAnimationFrame(() => {
+                        card.classList.add('fade-enter-active');
+                    });
+                    visibleRides++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Show/hide no rides message
+            if (visibleRides === 0 && searchTerm !== '') {
+                noRidesMessage.classList.remove('hidden');
+            } else {
+                noRidesMessage.classList.add('hidden');
+            }
+        }
+
+        searchInput.addEventListener('input', (e) => updateRidesVisibility(e.target.value));
+
+        // Handle filter buttons
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filterText = this.textContent.trim().toLowerCase();
+                let visibleRides = 0;
+
+                rideCards.forEach(card => {
+                    const timeText = card.querySelector('.fa-clock')
+                        .nextElementSibling.textContent.toLowerCase();
+                    
+                    if (filterText === 'today' && timeText.includes('today') ||
+                        filterText === 'tomorrow' && timeText.includes('tomorrow') ||
+                        filterText === 'nearby' ||
+                        filterText === 'price') {
+                        card.style.display = 'block';
+                        card.classList.add('fade-enter');
+                        requestAnimationFrame(() => {
+                            card.classList.add('fade-enter-active');
+                        });
+                        visibleRides++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Show/hide no rides message
+                if (visibleRides === 0) {
+                    noRidesMessage.classList.remove('hidden');
+                } else {
+                    noRidesMessage.classList.add('hidden');
+                }
+            });
+        });
+
+        // Handle ride request buttons
+        document.querySelectorAll('.request-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                this.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Requesting...';
+                this.disabled = true;
+                
+                setTimeout(() => {
+                    this.classList.add('sent');
+                    this.innerHTML = '<i class="fas fa-check mr-2"></i>Request Sent';
+                    
+                    // Show success notification
+                    const notification = document.createElement('div');
+                    notification.className = 'notification fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-full shadow-lg z-50';
+                    notification.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Request sent successfully!';
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 3000);
+                }, 1500);
+            });
+        });
+
+        // Reset search function
+        function resetSearch() {
+            searchInput.value = '';
+            updateRidesVisibility();
+            
+            // Reset filter buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            filterButtons[0].classList.add('active');
+        }
+    </script>
+</body>
+</html>
